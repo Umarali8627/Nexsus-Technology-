@@ -5,16 +5,16 @@ import { processSteps } from '@/lib/data';
 
 export default function ProcessSection() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-white dark:bg-nexus-dark">
       <div className="max-content">
         <ScrollReveal>
           <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-nexus-blue mb-3">
             Process
           </p>
-          <h2 className="font-display text-[28px] md:text-[36px] font-semibold text-nexus-navy tracking-heading leading-tight">
+          <h2 className="font-display text-[28px] md:text-[36px] font-semibold text-nexus-navy dark:text-slate-100 tracking-heading leading-tight">
             How we deliver
           </h2>
-          <p className="mt-3 text-[15px] text-nexus-text-secondary leading-relaxed max-w-[480px]">
+          <p className="mt-3 text-[15px] text-nexus-text-secondary dark:text-slate-400 leading-relaxed max-w-[480px]">
             A proven, transparent process designed to keep every project on track and every stakeholder aligned.
           </p>
         </ScrollReveal>
@@ -29,11 +29,11 @@ export default function ProcessSection() {
                   {step.number}
                 </span>
 
-                <h3 className="mt-1 font-display text-[16px] font-semibold text-nexus-navy tracking-tight-sm">
+                <h3 className="mt-1 font-display text-[16px] font-semibold text-nexus-navy dark:text-slate-100 tracking-tight-sm">
                   {step.title}
                 </h3>
 
-                <p className="mt-2 text-[14px] text-nexus-text-secondary leading-relaxed">
+                <p className="mt-2 text-[14px] text-nexus-text-secondary dark:text-slate-400 leading-relaxed">
                   {step.description}
                 </p>
               </div>

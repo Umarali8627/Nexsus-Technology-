@@ -39,9 +39,19 @@ body {
   overflow-x: hidden;
 }
 
+.dark body {
+  color: #E2E8F0;
+  background: #0A0A0F;
+}
+
 ::selection {
   background: rgba(37, 99, 235, 0.15);
   color: #0F172A;
+}
+
+.dark ::selection {
+  background: rgba(37, 99, 235, 0.25);
+  color: #E2E8F0;
 }
 
 /* Smooth scrollbar */
