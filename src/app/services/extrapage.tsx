@@ -19,36 +19,35 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 bg-nexus-surface/60 dark:bg-white/[0.02]">
         <div className="px-6 max-content md:px-12 lg:px-20">
-          <div className="grid items-center grid-cols-1 gap-16 lg:grid-cols-2">
 
-            {/* Left: Text */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-nexus-blue mb-3">
-                Services
-              </p>
-              <h3 className="font-display text-[24px] md:text-[32px] font-semibold text-nexus-navy dark:text-slate-100 leading-tight max-w-[600px]">
-                Solutions engineered for impact
-              </h3>
-              <p className="mt-4 text-[16px] text-nexus-text-secondary dark:text-slate-400 max-w-[520px]">
-                We specialize in AI, Web, and Mobile systems built with production-grade engineering.
-              </p>
-            </motion.div>
+          {/* Top: heading + paragraph */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-[640px] mx-auto"
+          >
+            <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-nexus-blue mb-3">
+              Services
+            </p>
+            <h1 className="font-display text-[36px] md:text-[48px] font-semibold text-nexus-navy dark:text-slate-100 leading-tight">
+              Solutions engineered for impact
+            </h1>
+            <p className="mt-4 text-[16px] text-nexus-text-secondary dark:text-slate-400">
+              We specialize in AI, Web, and Mobile systems built with production-grade engineering.
+            </p>
+          </motion.div>
 
-            {/* Right: Orbit */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="flex justify-center"
-            >
-              <HeroTechOrbit />
-            </motion.div>
+          {/* Center: orbit */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex justify-center mt-12"
+          >
+            <HeroTechOrbit />
+          </motion.div>
 
-          </div>
         </div>
       </section>
 
@@ -128,19 +127,19 @@ export default function ServicesPage() {
       ))}
 
       {/* Bottom CTA */}
-      <section className="relative py-24 overflow-hidden bg-nexus-surface/60 dark:bg-white/[0.02]">
+      <section className="relative py-24 overflow-hidden bg-nexus-navy">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] rounded-full bg-nexus-blue/[0.06] blur-[100px]" />
         </div>
         <div className="relative px-6 text-center max-content md:px-12 lg:px-20">
           <ScrollReveal>
-            <p className="font-serif italic text-[15px] text-nexus-blue dark:text-nexus-cyan/80 mb-4">
+            <p className="font-serif italic text-[15px] text-nexus-cyan/80 mb-4">
               Not sure where to start?
             </p>
-          <h2 className="font-display text-[28px] md:text-[36px] font-semibold text-[#0f172a] dark:text-white tracking-heading leading-tight max-w-[500px] mx-auto">
-  Let&apos;s figure it out together
-</h2>
-            <p className="mt-3 text-[15px] text-nexus-text-secondary dark:text-slate-400 max-w-[400px] mx-auto">
+            <h2 className="font-display text-[28px] md:text-[36px] font-semibold text-white tracking-heading leading-tight max-w-[500px] mx-auto">
+              Let&apos;s figure it out together
+            </h2>
+            <p className="mt-3 text-[15px] text-slate-400 max-w-[400px] mx-auto">
               Book a free consultation and we&apos;ll help identify the right solution for your business.
             </p>
             <Link

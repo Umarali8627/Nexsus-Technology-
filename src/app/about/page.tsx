@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, Linkedin } from 'lucide-react';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import { team } from '@/lib/data';
+import Image from 'next/image';
 
 const milestones = [
   { year: '2022', title: 'Founded', description: 'Nexus Technology was born from a shared vision to build software that matters.' },
@@ -17,8 +18,8 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-white">
-        <div className="max-content px-6 md:px-12 lg:px-20">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-nexus-surface/60 dark:bg-white/[0.02]">
+        <div className="px-6 max-content md:px-12 lg:px-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -27,10 +28,10 @@ export default function AboutPage() {
             <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-nexus-blue mb-3">
               About
             </p>
-            <h1 className="font-display text-[36px] md:text-[48px] font-semibold text-nexus-navy tracking-display leading-tight max-w-[600px]">
+            <h1 className="font-display text-[36px] md:text-[48px] font-semibold text-nexus-navy tracking-display leading-tight dark:text-slate-100">
               About Nexus Technology
             </h1>
-            <p className="mt-4 text-[16px] text-nexus-text-secondary leading-relaxed max-w-[560px]">
+            <p className="mt-4 text-[16px] text-nexus-text-secondary leading-relaxed max-w-[560px] dark:text-slate-300">
               We&apos;re a team of engineers, designers, and strategists building software that solves real problems for growing businesses.
             </p>
           </motion.div>
@@ -38,17 +39,17 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="py-20 md:py-28 bg-nexus-navy relative overflow-hidden">
+      <section className="relative py-20 overflow-hidden md:py-28 bg-nexus-surface/60 dark:bg-white/[0.02]">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/3 w-[400px] h-[400px] rounded-full bg-nexus-blue/[0.06] blur-[100px]" />
         </div>
 
-        <div className="relative max-content px-6 md:px-12 lg:px-20">
+        <div className="relative px-6 max-content md:px-12 lg:px-20">
           <ScrollReveal>
             <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-nexus-cyan mb-4">
               Our Mission
             </p>
-            <blockquote className="font-serif text-[24px] md:text-[32px] lg:text-[36px] text-white leading-[1.4] tracking-tight max-w-[720px] italic">
+            <blockquote className="font-serif text-[24px] md:text-[32px] lg:text-[36px] text-nexus-navy tracking-display leading-tight dark:text-slate-100">
               &ldquo;To empower businesses with technology that doesn&apos;t just work — it transforms how they operate, compete, and grow.&rdquo;
             </blockquote>
           </ScrollReveal>
@@ -56,25 +57,25 @@ export default function AboutPage() {
       </section>
 
       {/* Founding Story Timeline */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-nexus-surface/60 dark:bg-white/[0.02]">
         <div className="max-content">
           <ScrollReveal>
             <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-nexus-blue mb-3">
               Our Journey
             </p>
-            <h2 className="font-display text-[28px] md:text-[36px] font-semibold text-nexus-navy tracking-heading leading-tight">
+            <h2 className="font-display text-[28px] md:text-[36px] font-semibold text-nexus-navy tracking-display leading-tight dark:text-slate-100">
               The story so far
             </h2>
           </ScrollReveal>
 
-          <div className="mt-14 relative">
+          <div className="relative mt-14">
             {/* Timeline line */}
             <div className="hidden md:block absolute left-[120px] top-0 bottom-0 w-px bg-black/[0.06]" />
 
             <div className="space-y-10">
               {milestones.map((milestone, i) => (
                 <ScrollReveal key={milestone.year} delay={i * 0.1}>
-                  <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-12">
+                  <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-12">
                     <div className="flex-shrink-0 md:w-[120px] md:text-right">
                       <span className="font-mono text-[14px] font-medium text-nexus-blue">
                         {milestone.year}
@@ -87,10 +88,10 @@ export default function AboutPage() {
                     </div>
 
                     <div className="flex-1 pb-2">
-                      <h3 className="font-display text-[16px] font-semibold text-nexus-navy tracking-tight-sm">
+                      <h3 className="font-display text-[16px] font-semibold text-nexus-blue">
                         {milestone.title}
                       </h3>
-                      <p className="mt-1.5 text-[14px] text-nexus-text-secondary leading-relaxed max-w-[480px]">
+                      <p className="mt-1.5 text-[14px] text-nexus-text-secondary leading-relaxed max-w-[480px] dark:text-slate-300">
                         {milestone.description}
                       </p>
                     </div>
@@ -103,21 +104,21 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="section-padding bg-nexus-surface/50">
+      <section className="section-padding bg-nexus-surface/50 dark:bg-white/[0.02]">
         <div className="max-content">
           <ScrollReveal>
             <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-nexus-blue mb-3">
               Team
             </p>
-            <h2 className="font-display text-[28px] md:text-[36px] font-semibold text-nexus-navy tracking-heading leading-tight">
+            <h2 className="font-display text-[28px] md:text-[36px] font-semibold text-nexus-navy tracking-heading leading-tight dark:text-slate-100">
               The people behind Nexus
             </h2>
-            <p className="mt-3 text-[15px] text-nexus-text-secondary leading-relaxed max-w-[480px]">
+            <p className="mt-3 text-[15px] text-nexus-text-secondary leading-relaxed max-w-[480px] dark:text-slate-300">
               A small, focused team that delivers outsized impact.
             </p>
           </ScrollReveal>
 
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 mt-14 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((member, i) => (
               <ScrollReveal key={member.name} delay={i * 0.1}>
                 <div className="group p-6 rounded-xl bg-white border border-black/[0.04]
@@ -125,15 +126,18 @@ export default function AboutPage() {
                   transition-all duration-300">
 
                   {/* Photo placeholder */}
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-nexus-surface to-nexus-surface-alt
-                    flex items-center justify-center mb-5 overflow-hidden">
-                    <span className="font-display text-[20px] font-semibold text-nexus-blue/30">
-                      {member.name.charAt(0)}
-                    </span>
-                  </div>
+                  <div className="w-20 h-20 mb-5 overflow-hidden border rounded-2xl border-black/10">
+  <Image
+    src={member.image}
+    alt={member.name}
+    width={80}
+    height={80}
+    className="object-cover w-full h-full"
+  />
+</div>
 
                   <h3 className="font-display text-[16px] font-semibold text-nexus-navy tracking-tight-sm">
-                    {member.name}
+                    {member.name} 
                   </h3>
                   <p className="text-[13px] font-medium text-nexus-blue mt-0.5">
                     {member.role}
@@ -162,10 +166,10 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-nexus-navy">
-        <div className="max-content px-6 md:px-12 lg:px-20 text-center">
+      <section className="py-20 bg-nexus-surface/60 dark:bg-white/[0.02]">
+        <div className="px-6 text-center max-content md:px-12 lg:px-20">
           <ScrollReveal>
-            <h2 className="font-display text-[28px] md:text-[32px] font-semibold text-white tracking-heading">
+            <h2 className="font-display text-[28px] md:text-[32px] font-semibold text-nexus-dark-surface dark:text-white">
               Interested in working with us?
             </h2>
             <Link
@@ -174,7 +178,7 @@ export default function AboutPage() {
                 hover:bg-nexus-blue-dark transition-all duration-200"
             >
               Get in Touch
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </Link>
           </ScrollReveal>
         </div>

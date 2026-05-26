@@ -3,180 +3,61 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import { techData } from '@/lib/techData';
+import { TechLogo } from '@/components/ui/TechLogo';
 
 const categories = ['Web', 'Mobile', 'AI & ML'] as const;
-
-const techData: Record<string, { name: string; abbr: string }[]> = {
-  Web: [
-    { name: 'React', abbr: 'Re' },
-    { name: 'Next.js', abbr: 'Nx' },
-    { name: 'TypeScript', abbr: 'TS' },
-    { name: 'Node.js', abbr: 'No' },
-    { name: 'Express', abbr: 'Ex' },
-    { name: 'MongoDB', abbr: 'Mg' },
-    { name: 'PostgreSQL', abbr: 'Pg' },
-    { name: 'Redis', abbr: 'Rd' },
-    { name: 'Kubernetes', abbr: 'Kb' },
-    { name: 'Docker', abbr: 'Dk' },
-    { name: 'Vercel', abbr: 'Vc' },
-    { name: 'Tailwind', abbr: 'Tw' },
-  ],
-  Mobile: [
-    { name: 'Flutter', abbr: 'Fl' },
-    { name: 'React Native', abbr: 'RN' },
-    { name: 'Swift', abbr: 'Sw' },
-    { name: 'Kotlin', abbr: 'Kt' },
-    { name: 'Firebase', abbr: 'Fb' },
-    { name: 'Supabase', abbr: 'Sb' },
-    { name: 'GraphQL', abbr: 'Gq' },
-    { name: 'REST APIs', abbr: 'Rs' },
-  ],
-  'AI & ML': [
-    { name: 'Python', abbr: 'Py' },
-    { name: 'TensorFlow', abbr: 'TF' },
-    { name: 'PyTorch', abbr: 'PT' },
-    { name: 'n8n', abbr: 'n8n' },
-    { name: 'LangChain', abbr: 'LC' },
-    { name: 'HuggingFace', abbr: 'HF' },
-    { name: 'FastAPI', abbr: 'FA' },
-    { name: 'crewAi', abbr: 'CI' },
-    { name: 'SQL', abbr: 'SQL' },
-  ],
-};
-
-function TechLogo({ name, abbr }: { name: string; abbr: string }) {
-  const common = 'w-10 h-10';
-  const mono = (
-    <div className={`${common} rounded-lg bg-nexus-navy/[0.04] dark:bg-white/[0.06] flex items-center justify-center
-      text-[13px] font-mono font-medium text-nexus-navy/70 dark:text-slate-300`}>
-      {abbr}
-    </div>
-  );
- 
-
-  const icon: Record<string, string> = {
-  React: 'react',
-  'Next.js': 'nextdotjs',
-  TypeScript: 'typescript',
-  'Node.js': 'nodedotjs',
-  Express: 'express',
-  MongoDB: 'mongodb',
-  PostgreSQL: 'postgresql',
-  Redis: 'redis',
-
-  // FIXED
-  Kubernetes: 'kubernetes',
-
-  Docker: 'docker',
-  Vercel: 'vercel',
-  Tailwind: 'tailwindcss',
-
-  Flutter: 'flutter',
-  'React Native': 'react',
-  Swift: 'swift',
-  Kotlin: 'kotlin',
-  Firebase: 'firebase',
-  Supabase: 'supabase',
-  GraphQL: 'graphql',
-
-  Python: 'python',
-  TensorFlow: 'tensorflow',
-  PyTorch: 'pytorch',
-
-  // FIXED
-  n8n: 'n8n',
-  LangChain: 'langchain',
-  HuggingFace: 'huggingface',
-  FastAPI: 'fastapi',
-
-  // FIXED
-  crewAi: 'crewai',
-  SQL: 'mysql',
- 
-
-  // REST APIs
-  'REST APIs': 'fastapi',
-};
-  const slug = icon[name];
-  if (!slug) return mono;
-
-  const url = `https://cdn.simpleicons.org/${slug}`;
-
-  // Some logos (e.g. Next.js/Vercel) are black by default; show a white variant in dark mode.
-  if (slug === 'nextdotjs' || slug === 'vercel' || slug === 'express') {
-    const lightUrl = `https://cdn.simpleicons.org/${slug}/000`;
-    const darkUrl = `https://cdn.simpleicons.org/${slug}/fff`;
-    return (
-      <>
-        <img src={lightUrl} alt={`${name} logo`} width={40} height={40} className={`${common} dark:hidden`} loading="lazy" />
-        <img src={darkUrl} alt={`${name} logo`} width={40} height={40} className={`${common} hidden dark:block`} loading="lazy" />
-      </>
-    );
-  }
-
-  return <img src={url} alt={`${name} logo`} width={40} height={40} className={common} loading="lazy" />;
-}
+type Category = typeof categories[number];
 
 export default function TechStackSection() {
-  const [active, setActive] = useState<string>('Web');
+  const [active, setActive] = useState<Category>('Web');
 
   return (
     <section className="section-padding bg-nexus-surface/60 dark:bg-white/[0.02]">
       <div className="max-content">
         <ScrollReveal>
 
-  {/* Moving Tech Stack */}
-  <div className="relative mb-10 overflow-hidden">
+          {/* Moving Tech Stack */}
+          <div className="relative mb-10 overflow-hidden">
+            <div className="absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-nexus-surface dark:from-[#0B0F19] to-transparent" />
+            <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-nexus-surface dark:from-[#0B0F19] to-transparent" />
 
-    {/* Left Fade */}
-    <div className="absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-nexus-surface dark:from-[#0B0F19] to-transparent" />
+            <motion.div
+              className="flex gap-4 w-max"
+              animate={{ x: ['0%', '-50%'] }}
+              transition={{ repeat: Infinity, duration: 30, ease: 'linear' }}
+            >
+              {[
+                ...Object.values(techData).flat(),
+                ...Object.values(techData).flat(),
+              ].map((tech, i) => (
+                <div
+                  key={`${tech.name}-${i}`}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full
+                    bg-white dark:bg-nexus-dark-surface
+                    border border-black/[0.05] dark:border-white/[0.08]
+                    shadow-sm"
+                >
+                  <TechLogo name={tech.name} abbr={tech.abbr} />
+                  <span className="text-[13px] font-medium whitespace-nowrap text-nexus-text-secondary dark:text-slate-300">
+                    {tech.name}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
 
-    {/* Right Fade */}
-    <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-nexus-surface dark:from-[#0B0F19] to-transparent" />
+          <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-nexus-blue mb-3">
+            Technology
+          </p>
+          <h2 className="font-display text-[28px] md:text-[36px] font-semibold text-nexus-navy dark:text-slate-100 tracking-heading leading-tight">
+            Our technology stack
+          </h2>
+          <p className="mt-3 text-[15px] text-nexus-text-secondary dark:text-slate-400 leading-relaxed max-w-[480px]">
+            We use production-ready, cutting-edge tools to build solutions that scale.
+          </p>
 
-    <motion.div
-      className="flex gap-4 w-max"
-      animate={{ x: ['0%', '-50%'] }}
-      transition={{
-        repeat: Infinity,
-        duration: 30,
-        ease: 'linear',
-      }}
-    >
-      {[
-        ...Object.values(techData).flat(),
-        ...Object.values(techData).flat(),
-      ].map((tech, i) => (
-        <div
-          key={`${tech.name}-${i}`}
-          className="flex items-center gap-2 px-4 py-2 rounded-full
-          bg-white dark:bg-nexus-dark-surface
-          border border-black/[0.05] dark:border-white/[0.08]
-          shadow-sm"
-        >
-          <TechLogo name={tech.name} abbr={tech.abbr} />
-
-          <span className="text-[13px] font-medium whitespace-nowrap text-nexus-text-secondary dark:text-slate-300">
-            {tech.name}
-          </span>
-        </div>
-      ))}
-    </motion.div>
-  </div>
-
-  <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-nexus-blue mb-3">
-    Technology
-  </p>
-
-  <h2 className="font-display text-[28px] md:text-[36px] font-semibold text-nexus-navy dark:text-slate-100 tracking-heading leading-tight">
-    Our technology stack
-  </h2>
-
-  <p className="mt-3 text-[15px] text-nexus-text-secondary dark:text-slate-400 leading-relaxed max-w-[480px]">
-    We use production-ready, cutting-edge tools to build solutions that scale.
-  </p>
-
-</ScrollReveal>
+        </ScrollReveal>
 
         {/* Category tabs */}
         <ScrollReveal delay={0.1}>
@@ -186,7 +67,10 @@ export default function TechStackSection() {
                 key={cat}
                 onClick={() => setActive(cat)}
                 className={`relative px-5 py-2 text-[13px] font-medium rounded-md transition-all duration-200
-                  ${active === cat ? 'text-nexus-navy dark:text-slate-100' : 'text-nexus-text-secondary dark:text-slate-400 hover:text-nexus-navy dark:hover:text-slate-100'}`}
+                  ${active === cat
+                    ? 'text-nexus-navy dark:text-slate-100'
+                    : 'text-nexus-text-secondary dark:text-slate-400 hover:text-nexus-navy dark:hover:text-slate-100'
+                  }`}
               >
                 {active === cat && (
                   <motion.div

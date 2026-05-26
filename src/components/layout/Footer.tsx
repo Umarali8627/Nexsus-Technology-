@@ -3,7 +3,7 @@ import { siteConfig, navLinks, services } from '@/lib/data';
 
 export default function Footer() {
   return (
-    <footer className="text-gray-900 transition-colors bg-gray-50 dark:bg-nexus-navy dark:text-white">
+    <footer className="text-gray-900 transition-colors bg-nexus-surface/60 dark:bg-white/[0.02]">
 
       <div className="max-content section-padding-sm">
 

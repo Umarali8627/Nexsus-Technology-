@@ -6,7 +6,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function CTABanner() {
   return (
-    <section className="relative py-24 overflow-hidden transition-colors duration-300 md:py-32 bg-gray-50 dark:bg-nexus-navy">
+    <section className="relative py-24 overflow-hidden transition-colors duration-300 md:py-32 bg-nexus-surface/60 dark:bg-white/[0.02]">
 
       {/* Ambient glow */}
       <div className="absolute inset-0">

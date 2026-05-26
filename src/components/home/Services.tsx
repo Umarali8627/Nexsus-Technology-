@@ -13,7 +13,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export default function ServicesSection() {
   return (
-    <section className="relative overflow-hidden bg-white section-padding dark:bg-nexus-dark">
+    <section className="relative overflow-hidden bg-nexus-surface/60 dark:bg-white/[0.02]">
       
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden -z-10">

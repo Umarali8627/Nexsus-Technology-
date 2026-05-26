@@ -4,8 +4,8 @@ export const siteConfig = {
   name: 'Nexus Technology',
   tagline: 'Building Tomorrow\'s Technology, Today',
   description: 'Premium software development company specializing in web, mobile, and AI solutions.',
-  email: 'hello@nexustechnology.com',
-  phone: '+92 300 0000000',
+  email: 'info.nexustech26@gmail.com',
+  phone: '+92 334 5005212',
   address: 'Islamabad, Pakistan',
   hours: 'Mon - Fri, 9AM - 6PM PKT',
   social: {
@@ -222,26 +222,26 @@ export const projects: Project[] = [
 
 export const team: TeamMember[] = [
   {
-    name: 'Rayyan',
+    name: 'Umar Ali',
     role: 'Founder & CEO',
-    bio: 'Visionary leader with deep expertise in technology strategy and product development.',
-    image: '/team/founder.jpg',
-    linkedin: '#',
+    bio: 'Visionary leader with deep expertise in AI and devleopment',
+    image: 'https://instagram.fpew3-1.fna.fbcdn.net/v/t51.82787-19/674582167_18124213258614638_8958631439659707640_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fpew3-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2gFQvCiDOQwMXpUOPASqXHgJvlCbzfDBWzhvVUW6XygPC_fJd8wgJ5bN06OSj1FfdKM&_nc_ohc=MsjOrbUMaVUQ7kNvwFgdyPL&_nc_gid=IRVEZFIHBtAja_fqAkJdRg&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Af6u4heEClbjvKgwWzMjlQrLxQl-hV1kSi8l6CBuhppMFg&oe=6A1B747F&_nc_sid=7a9f4b',
+    linkedin: 'www.linkedin.com/in/umarali8627',
     isFounder: true,
   },
   {
-    name: 'Co-Founder Name',
+    name: 'Rayyan Ali',
     role: 'Co-Founder & CTO',
     bio: 'Technical architect driving innovation across web, mobile, and AI platforms.',
-    image: '/team/cofounder.jpg',
+    image: 'https://instagram.fpew3-1.fna.fbcdn.net/v/t51.2885-19/490420147_1715890135972774_4971950715524031863_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fpew3-1.fna.fbcdn.net&_nc_cat=110&_nc_oc=Q6cZ2gHT10JkZpUWfHyMPdjGJNKI0elRkX9Y_vv1zgNSY1A3FcHYJss7oISP6YULrgXtYgM&_nc_ohc=JsN7EysjrzEQ7kNvwFB6SKu&_nc_gid=NX62ik11DgFOUBlqqxxwGQ&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Af7izL6tuACqcqZhKcGE4GyaaycEtH0sU68n9Wpu-BDtIQ&oe=6A1B6CFC&_nc_sid=7a9f4b',
     linkedin: '#',
     isFounder: true,
   },
   {
-    name: 'Team Lead Name',
+    name: 'Nimat Ullah',
     role: 'Team Lead',
     bio: 'Engineering lead managing delivery across multiple projects with precision.',
-    image: '/team/teamlead.jpg',
+    image: 'https://th.bing.com/th/id/R.4eb01b6d1de8180fc16a7ea457df2dd0?rik=mDmVmiPWKjG19Q&riu=http%3a%2f%2fwallup.net%2fwp-content%2fuploads%2f2016%2f01%2f102787-nature-mountain-river-landscape.jpg&ehk=tKQDONLRX3EXEvzzdRuXB5UBE3a0IgFKug46zeMojOg%3d&risl=&pid=ImgRaw&r=0',
     linkedin: '#',
   },
 ];

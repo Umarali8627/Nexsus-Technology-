@@ -5,7 +5,7 @@ import { processSteps } from '@/lib/data';
 
 export default function ProcessSection() {
   return (
-    <section className="section-padding bg-white dark:bg-nexus-dark">
+    <section className="bg-nexus-surface/60 dark:bg-white/[0.02]">
       <div className="max-content">
         <ScrollReveal>
           <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-nexus-blue mb-3">
@@ -19,10 +19,10 @@ export default function ProcessSection() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+        <div className="grid grid-cols-1 mt-14 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
           {processSteps.map((step, i) => (
             <ScrollReveal key={step.number} delay={i * 0.08}>
-              <div className="group relative">
+              <div className="relative group">
                 {/* Step number */}
                 <span className="font-mono text-[48px] font-medium text-nexus-blue/[0.08] leading-none
                   group-hover:text-nexus-blue/[0.15] transition-colors duration-300">
