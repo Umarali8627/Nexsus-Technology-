@@ -56,8 +56,8 @@ export default function ContactPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-32 pb-8 md:pt-40 md:pb-12 bg-white">
-        <div className="max-content px-6 md:px-12 lg:px-20">
+      <section className="pt-32 pb-8 md:pt-40 md:pb-12 bg-nexus-surface/60 dark:bg-white/[0.02]">
+        <div className="px-6 max-content md:px-12 lg:px-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -66,7 +66,7 @@ export default function ContactPage() {
             <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-nexus-blue mb-3">
               Contact
             </p>
-            <h1 className="font-display text-[36px] md:text-[48px] font-semibold text-nexus-navy tracking-display leading-tight">
+            <h1 className="font-display text-[36px] md:text-[48px] font-semibold text-nexus-navy tracking-display leading-tight dark:text-slate-100">
               Get in touch
             </h1>
             <p className="mt-3 text-[16px] text-nexus-text-secondary leading-relaxed max-w-[480px]">
@@ -77,9 +77,9 @@ export default function ContactPage() {
       </section>
 
       {/* Contact section */}
-      <section className="section-padding pt-8 bg-white">
+      <section className="pt-8 bg-nexus-surface/60 dark:bg-white/[0.02]">
         <div className="max-content">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-16">
             {/* Left: Contact info */}
             <div className="lg:col-span-2">
               <ScrollReveal>
@@ -106,7 +106,7 @@ export default function ContactPage() {
 
                 {/* Social */}
                 <div className="mt-8">
-                  <p className="text-[12px] font-medium uppercase tracking-[0.08em] text-nexus-text-tertiary mb-3">
+                  <p className="text-[12px] font-medium uppercase tracking-[0.08em] text-nexus-text-tertiary mb-3 dark:text-ellipsis" >
                     Follow Us
                   </p>
                   <div className="flex items-center gap-3">
@@ -117,7 +117,7 @@ export default function ContactPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-10 h-10 rounded-lg bg-nexus-surface border border-black/[0.04] flex items-center justify-center
-                          text-nexus-text-secondary hover:text-nexus-blue hover:border-nexus-blue/[0.15] transition-all duration-200"
+                          text-nexus-text-secondary hover:text-nexus-blue hover:border-nexus-blue/[0.15] transition-all duration-200 dark:text-slate-300 dark:hover:text-slate-100"
                       >
                         <span className="text-[11px] font-mono font-medium capitalize">
                           {platform.slice(0, 2).toUpperCase()}
@@ -161,7 +161,7 @@ export default function ContactPage() {
                     </motion.div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-5">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                         <div>
                           <label className="block text-[12px] font-medium text-nexus-text-secondary mb-1.5">
                             Full Name *
@@ -192,7 +192,7 @@ export default function ContactPage() {
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                         <div>
                           <label className="block text-[12px] font-medium text-nexus-text-secondary mb-1.5">
                             Phone Number
@@ -260,8 +260,8 @@ export default function ContactPage() {
                       </div>
 
                       {formState === 'error' && (
-                        <div className="flex items-center gap-2 p-3 rounded-lg bg-red-50 border border-red-100">
-                          <AlertCircle size={16} className="text-red-500 flex-shrink-0" />
+                        <div className="flex items-center gap-2 p-3 border border-red-100 rounded-lg bg-red-50">
+                          <AlertCircle size={16} className="flex-shrink-0 text-red-500" />
                           <p className="text-[13px] text-red-600">
                             Something went wrong. Please try again or email us directly.
                           </p>
@@ -279,7 +279,7 @@ export default function ContactPage() {
                       >
                         {formState === 'loading' ? (
                           <>
-                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                            <div className="w-4 h-4 border-2 rounded-full border-white/30 border-t-white animate-spin" />
                             Sending...
                           </>
                         ) : (
