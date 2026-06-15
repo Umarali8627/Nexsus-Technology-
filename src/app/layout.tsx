@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import SiteChrome from '@/components/layout/SiteChrome';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -49,11 +50,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
-        <Navbar />
-        <main className="min-h-screen">
+        <SiteChrome navbar={<Navbar />} footer={<Footer />}>
           {children}
-        </main>
-        <Footer />
+        </SiteChrome>
       </body>
     </html>
   );

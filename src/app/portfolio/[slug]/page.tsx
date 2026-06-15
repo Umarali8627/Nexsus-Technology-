@@ -1,11 +1,14 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, ExternalLink, Check } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, Check, Loader2 } from 'lucide-react';
 import ScrollReveal from '@/components/ui/ScrollReveal';
-import { projects } from '@/lib/data';
+import { projects as staticProjects } from '@/lib/data';
+import { getAllProjects } from '@/lib/projects';
+import type { Project } from '@/types';
 
 const categoryLabels: Record<string, string> = {
   web: 'Web Development',
@@ -14,9 +17,30 @@ const categoryLabels: Record<string, string> = {
 };
 
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
+  // Start with the static projects, then merge in Firebase ones on the client.
+  const [projects, setProjects] = useState<Project[]>(staticProjects);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    getAllProjects().then((all) => {
+      setProjects(all);
+      setLoaded(true);
+    });
+  }, []);
+
   const project = projects.find((p) => p.slug === params.slug);
 
-  if (!project) return notFound();
+  if (!project) {
+    // A Firebase slug may not be present until the client fetch resolves.
+    if (!loaded) {
+      return (
+        <div className="flex min-h-screen items-center justify-center">
+          <Loader2 className="animate-spin text-nexus-text-tertiary" size={24} />
+        </div>
+      );
+    }
+    return notFound();
+  }
 
   const currentIndex = projects.findIndex((p) => p.slug === params.slug);
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
@@ -56,6 +80,32 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <p className="mt-4 text-[16px] text-nexus-text-secondary leading-relaxed max-w-[600px]">
               {project.description}
             </p>
+
+            {/* External links */}
+            {(project.liveUrl || project.behanceUrl) && (
+              <div className="mt-6 flex flex-wrap gap-3">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-lg bg-nexus-blue px-5 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-nexus-blue-dark"
+                  >
+                    Visit Website <ExternalLink size={14} />
+                  </a>
+                )}
+                {project.behanceUrl && (
+                  <a
+                    href={project.behanceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-lg border border-black/[0.08] px-5 py-2.5 text-[14px] font-medium text-nexus-navy transition-colors hover:border-nexus-blue/40"
+                  >
+                    View on Behance <ExternalLink size={14} />
+                  </a>
+                )}
+              </div>
+            )}
           </motion.div>
 
           {/* Project meta */}
@@ -88,10 +138,19 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       <section className="bg-nexus-surface/50">
         <div className="max-content px-6 md:px-12 lg:px-20 py-16">
           <ScrollReveal>
-            <div className="aspect-[16/9] rounded-2xl bg-gradient-to-br from-nexus-navy/[0.03] to-nexus-blue/[0.03] border border-black/[0.04] flex items-center justify-center">
-              <span className="font-mono text-[14px] text-nexus-text-tertiary">
-                Project Screenshot — {project.title}
-              </span>
+            <div className="aspect-[16/9] overflow-hidden rounded-2xl bg-gradient-to-br from-nexus-navy/[0.03] to-nexus-blue/[0.03] border border-black/[0.04] flex items-center justify-center">
+              {project.thumbnail && /^https?:\/\//.test(project.thumbnail) ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={project.thumbnail}
+                  alt={project.title}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <span className="font-mono text-[14px] text-nexus-text-tertiary">
+                  Project Screenshot — {project.title}
+                </span>
+              )}
             </div>
           </ScrollReveal>
         </div>

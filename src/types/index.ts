@@ -18,7 +18,12 @@ export interface Project {
   };
   images?: string[];
   liveUrl?: string;
+  behanceUrl?: string;
   featured?: boolean;
+  // Set on projects loaded from Firestore (absent on the hardcoded ones).
+  id?: string;
+  source?: 'static' | 'firebase';
+  createdAt?: number;
 }
 
 export interface TeamMember {

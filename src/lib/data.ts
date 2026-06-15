@@ -2,7 +2,7 @@ import { Project, TeamMember, Service, Stat, ProcessStep } from '@/types';
 
 export const siteConfig = {
   name: 'Nexus Technology',
-  tagline: 'Building Tomorrow\'s Technology, Today',
+  tagline: '',
   description: 'Premium software development company specializing in web, mobile, and AI solutions.',
   email: 'info.nexustech26@gmail.com',
   phone: '+92 334 5005212',

@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import ScrollReveal from '@/components/ui/ScrollReveal';
-import { projects } from '@/lib/data';
+import { projects as staticProjects } from '@/lib/data';
+import { fetchFirebaseProjects } from '@/lib/projects';
+import type { Project } from '@/types';
 
 const categories = [
   { label: 'All', value: 'all' },
@@ -22,6 +24,14 @@ const categoryColors: Record<string, string> = {
 
 export default function PortfolioPage() {
   const [filter, setFilter] = useState('all');
+  const [projects, setProjects] = useState<Project[]>(staticProjects);
+
+  // Prepend any Firebase-added projects once they load on the client.
+  useEffect(() => {
+    fetchFirebaseProjects().then((fbProjects) => {
+      if (fbProjects.length) setProjects([...fbProjects, ...staticProjects]);
+    });
+  }, []);
 
   const filtered = filter === 'all'
     ? projects
@@ -81,7 +91,7 @@ export default function PortfolioPage() {
             <AnimatePresence mode="popLayout">
               {filtered.map((project) => (
                 <motion.div
-                  key={project.slug}
+                  key={project.id || project.slug}
                   layout
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -93,13 +103,22 @@ export default function PortfolioPage() {
                       hover:border-nexus-blue/[0.1] hover:shadow-[0_8px_32px_rgba(0,0,0,0.06)]
                       hover:-translate-y-1 transition-all duration-300">
 
-                      {/* Thumbnail placeholder */}
+                      {/* Thumbnail — real preview image when available, else placeholder */}
                       <div className="relative aspect-[16/10] bg-gradient-to-br from-nexus-surface to-nexus-surface-alt overflow-hidden">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="font-mono text-[13px] text-nexus-text-tertiary">
-                            {project.title}
-                          </span>
-                        </div>
+                        {project.thumbnail && /^https?:\/\//.test(project.thumbnail) ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={project.thumbnail}
+                            alt={project.title}
+                            className="absolute inset-0 h-full w-full object-cover"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="font-mono text-[13px] text-nexus-text-tertiary">
+                              {project.title}
+                            </span>
+                          </div>
+                        )}
                         {/* Hover overlay */}
                         <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 bg-nexus-navy/60 group-hover:opacity-100">
                           <span className="flex items-center gap-1.5 text-[13px] font-medium text-white">
